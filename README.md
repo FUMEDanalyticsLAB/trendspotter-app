@@ -1,56 +1,30 @@
-# Welcome to your Expo app 👋
+# TrendSpotter
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+TrendSpotter is a multi-wearable behaviour-change advisor. It turns the data from the wearables you already have into one small habit at a time, in plain language, with a 14-day plan and a supportive circle. It is a wellness proof of concept: it does not diagnose, and all demo data is synthetic.
 
-## Get started
+## Status
 
-1. Install dependencies
+- **Live link:** LIVE_LINK_HERE. This is an interactive prototype of the full experience, designed tonight.
+- **This repository** contains the Expo app scaffold and the architecture for the next build step: data validation (no number without a source), data coverage, the 14-day review, and synthetic personas. See [ARCHITECTURE.md](ARCHITECTURE.md).
+- There are no unit tests yet. They come with the next build step.
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## How to run
 
 ```bash
-npm run reset-project
+npm install
+npx expo start            # dev server (press w for web)
+npx expo export --platform web   # static web build in dist/
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+## Safety
 
-### Other setup steps
+TrendSpotter gives lifestyle suggestions only. No diagnoses, no medication or diet advice. If you have chest pain, fainting, or trouble breathing, seek care now.
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Team
 
-## Learn more
+Team GuideRail: a physician (clinical content and safety review) and an engineer (build and deployment).
 
-To learn more about developing your project with Expo, look at the following resources:
+## Prior work and credits
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Prior work: the Expo `create-expo-app` template only.
+- Detail settings inspired by Dr. Mike Evans's wearable mindsets.
