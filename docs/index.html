@@ -27,7 +27,7 @@ button{font-family:inherit}
 <nav style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:26px 0;flex-wrap:wrap">
 <div style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px"><div style="width:12px;height:12px;border-radius:50%;background:#5CF2B0;box-shadow:0 0 14px rgba(92,242,176,0.8)"></div>TrendSpotter</div>
 <div style="display:flex;align-items:center;gap:20px">
-<a href="TrendSpotter-App-v4.dc.html" style="min-height:44px;display:flex;align-items:center;padding:0 22px;border-radius:999px;background:#5CF2B0;color:#04140D;font-size:15px;font-weight:700;text-decoration:none">Try the demo</a>
+<a href="#preview" style="min-height:44px;display:flex;align-items:center;padding:0 22px;border-radius:999px;background:#5CF2B0;color:#04140D;font-size:15px;font-weight:700;text-decoration:none">Try the demo</a>
 </div>
 </nav>
 
@@ -37,13 +37,13 @@ button{font-family:inherit}
 <h1 style="margin:0;font-family:ui-rounded,'SF Pro Rounded','Nunito',-apple-system,'Inter',sans-serif;font-size:clamp(56px,7.4vw,104px);font-weight:800;letter-spacing:-0.04em;line-height:0.95">TrendSpotter</h1>
 <p style="margin:0;font-size:clamp(20px,2vw,26px);line-height:1.4;text-wrap:pretty">Wearables tell you what happened. TrendSpotter helps you change what happens next, with your circle.</p>
 <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px">
-<a href="TrendSpotter-App-v4.dc.html" style="min-height:56px;display:flex;align-items:center;padding:0 32px;border-radius:999px;background:#5CF2B0;color:#04140D;font-size:17px;font-weight:700;text-decoration:none;box-shadow:0 12px 34px rgba(92,242,176,0.28)">Try the demo</a>
+<a href="#preview" style="min-height:56px;display:flex;align-items:center;padding:0 32px;border-radius:999px;background:#5CF2B0;color:#04140D;font-size:17px;font-weight:700;text-decoration:none;box-shadow:0 12px 34px rgba(92,242,176,0.28)">Try the demo</a>
 <a href="#track" style="min-height:56px;display:flex;align-items:center;padding:0 26px;border-radius:999px;border:1px solid rgba(242,251,247,0.24);background:rgba(200,255,235,0.06);color:#F2FBF7;font-size:16px;font-weight:600;text-decoration:none">What we track</a>
 </div>
-<div style="font-size:14px;color:rgba(242,251,247,0.8)">Synthetic demo data. No account needed. The phone is live: tap through it.</div>
+<div style="font-size:14px;color:rgba(242,251,247,0.8)">Synthetic demo data. No account needed. Preview of the Today screen.</div>
 </div>
 <div style="display:flex;justify-content:center">
-<dc-import name="TrendSpotter-App-v4" start-screen="{{ phoneScreen }}" show-nav="{{ false }}" hint-size="442px,912px"></dc-import>
+<img id="preview" src="today.png" alt="TrendSpotter Today screen: tonight's bedtime, your circle, goals kept and sleep trend" style="width:min(100%,420px);height:auto;border-radius:44px">
 </div>
 </section>
 
@@ -74,9 +74,15 @@ button{font-family:inherit}
 </div>
 <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px dashed rgba(242,251,247,0.32);background:rgba(242,251,247,0.06);color:rgba(242,251,247,0.78)">Coming soon</span></div>
 <div style="display:flex;flex-wrap:wrap;gap:8px">
-<sc-for list="{{ wearSoon }}" as="w" hint-placeholder-count="4">
-<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">{{ w }}</div>
-</sc-for>
+
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">Apple Health and Apple Watch</div>
+
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">Garmin</div>
+
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">Fitbit and Google Pixel Watch</div>
+
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">Samsung Galaxy Watch and Ring</div>
+
 </div>
 </div>
 <div style="background:rgba(200,255,235,0.06);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.22);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:16px">
@@ -86,9 +92,19 @@ button{font-family:inherit}
 </div>
 <div style="display:flex;align-items:center;gap:8px"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px dashed rgba(242,251,247,0.32);background:rgba(242,251,247,0.06);color:rgba(242,251,247,0.78)">Coming soon</span></div>
 <div style="display:flex;flex-wrap:wrap;gap:8px">
-<sc-for list="{{ markSoon }}" as="m" hint-placeholder-count="6">
-<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">{{ m }}</div>
-</sc-for>
+
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">Activity and steps</div>
+
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">HRV and recovery</div>
+
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">Resting heart rate</div>
+
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">Stress</div>
+
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">Cardio fitness</div>
+
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">Cycle and perimenopause context</div>
+
 </div>
 </div>
 </section>
@@ -96,9 +112,9 @@ button{font-family:inherit}
 <footer id="about" style="display:flex;flex-direction:column;gap:18px;padding:28px 0 48px;border-top:1px solid rgba(242,251,247,0.12);scroll-margin-top:24px">
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px">
 <p style="margin:0;font-size:14px;color:rgba(242,251,247,0.8)">A wellness proof of concept, not medical advice. Demo data is synthetic.</p>
-<button onClick="{{ toggleAbout }}" aria-expanded="{{ aboutOpen }}" style="min-height:44px;padding:0;background:none;border:0;color:#5CF2B0;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer">About and safety</button>
+<span style="color:#5CF2B0;font-size:14px;font-weight:600">About and safety</span>
 </div>
-<sc-if value="{{ aboutOpen }}" hint-placeholder-val="{{ false }}">
+
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;padding:28px;border-radius:24px;background:rgba(200,255,235,0.06);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.22)">
 <div style="display:flex;flex-direction:column;gap:12px">
 <p style="margin:0;font-size:16px;line-height:1.55">TrendSpotter is a physician-designed wellness proof of concept. It is not a medical device and does not diagnose, treat or monitor any condition.</p>
@@ -109,7 +125,7 @@ button{font-family:inherit}
 <span style="font-size:16px;line-height:1.55;font-weight:600">If you have chest pain, fainting, or trouble breathing, seek care now.</span>
 </div>
 </div>
-</sc-if>
+
 </footer>
 </div>
 </div>
