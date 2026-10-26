@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Nunito:wght@700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#04070A;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#5CF2B0}
+a:hover{color:#F2FBF7}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="position:relative;min-height:100vh;overflow:hidden;background:#04070A;color:#F2FBF7;font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',system-ui,sans-serif">
+<div style="position:absolute;left:-260px;top:-320px;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(27,217,160,0.45) 0%,rgba(27,217,160,0) 65%);filter:blur(40px);pointer-events:none"></div>
+<div style="position:absolute;right:-300px;top:-300px;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(42,123,255,0.4) 0%,rgba(42,123,255,0) 65%);filter:blur(40px);pointer-events:none"></div>
+<div style="position:absolute;right:-300px;top:900px;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle,rgba(59,31,110,0.85) 0%,rgba(59,31,110,0) 65%);filter:blur(40px);pointer-events:none"></div>
+
+<div style="position:relative;max-width:1200px;margin:0 auto;padding:0 32px">
+<nav style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:26px 0;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px"><div style="width:12px;height:12px;border-radius:50%;background:#5CF2B0;box-shadow:0 0 14px rgba(92,242,176,0.8)"></div>TrendSpotter</div>
+<div style="display:flex;align-items:center;gap:20px">
+<a href="TrendSpotter-App-v4.dc.html" style="min-height:44px;display:flex;align-items:center;padding:0 22px;border-radius:999px;background:#5CF2B0;color:#04140D;font-size:15px;font-weight:700;text-decoration:none">Try the demo</a>
+</div>
+</nav>
+
+<section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:48px;align-items:center;padding:40px 0 80px">
+<div style="display:flex;flex-direction:column;gap:22px;max-width:580px">
+<div style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Physician-designed · Sleep first</div>
+<h1 style="margin:0;font-family:ui-rounded,'SF Pro Rounded','Nunito',-apple-system,'Inter',sans-serif;font-size:clamp(56px,7.4vw,104px);font-weight:800;letter-spacing:-0.04em;line-height:0.95">TrendSpotter</h1>
+<p style="margin:0;font-size:clamp(20px,2vw,26px);line-height:1.4;text-wrap:pretty">Wearables tell you what happened. TrendSpotter helps you change what happens next, with your circle.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px">
+<a href="TrendSpotter-App-v4.dc.html" style="min-height:56px;display:flex;align-items:center;padding:0 32px;border-radius:999px;background:#5CF2B0;color:#04140D;font-size:17px;font-weight:700;text-decoration:none;box-shadow:0 12px 34px rgba(92,242,176,0.28)">Try the demo</a>
+<a href="#track" style="min-height:56px;display:flex;align-items:center;padding:0 26px;border-radius:999px;border:1px solid rgba(242,251,247,0.24);background:rgba(200,255,235,0.06);color:#F2FBF7;font-size:16px;font-weight:600;text-decoration:none">What we track</a>
+</div>
+<div style="font-size:14px;color:rgba(242,251,247,0.8)">Synthetic demo data. No account needed. The phone is live: tap through it.</div>
+</div>
+<div style="display:flex;justify-content:center">
+<dc-import name="TrendSpotter-App-v4" start-screen="{{ phoneScreen }}" show-nav="{{ false }}" hint-size="442px,912px"></dc-import>
+</div>
+</section>
+
+<section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;padding-bottom:88px">
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:28px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5CF2B0;font-weight:600">Focus</div>
+<div style="font-size:22px;font-weight:650">One behaviour at a time</div>
+<p style="margin:0;font-size:16px;line-height:1.5;color:rgba(242,251,247,0.8)">Your devices produce dozens of scores. We turn them into a single habit for 14 days, then you keep, adjust or swap it.</p>
+</div>
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:28px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5CF2B0;font-weight:600">Honesty</div>
+<div style="font-size:22px;font-weight:650">Honest data coverage</div>
+<p style="margin:0;font-size:16px;line-height:1.5;color:rgba(242,251,247,0.8)">We show how many nights your wearables actually captured, so a missing night never reads as a failure.</p>
+</div>
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:28px;display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5CF2B0;font-weight:600">Privacy</div>
+<div style="font-size:22px;font-weight:650">Partners cheer, never see</div>
+<p style="margin:0;font-size:16px;line-height:1.5;color:rgba(242,251,247,0.8)">Your circle sees check marks and cheers. Never your sleep, your scores or your data.</p>
+</div>
+</section>
+
+<section id="track" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:18px;padding-bottom:88px;scroll-margin-top:24px">
+<div style="background:rgba(200,255,235,0.06);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.22);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Works with</div><div style="font-size:22px;font-weight:650">Your wearables, read together</div></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:6px 8px 6px 18px;border-radius:999px;background:rgba(200,255,235,0.12);border:1px solid rgba(92,242,176,0.5);font-size:16px;font-weight:650">Oura<span style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:rgba(92,242,176,0.16);color:#5CF2B0">Demo data</span></div>
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:6px 8px 6px 18px;border-radius:999px;background:rgba(200,255,235,0.12);border:1px solid rgba(92,242,176,0.5);font-size:16px;font-weight:650">Whoop<span style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:rgba(92,242,176,0.16);color:#5CF2B0">Demo data</span></div>
+</div>
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px dashed rgba(242,251,247,0.32);background:rgba(242,251,247,0.06);color:rgba(242,251,247,0.78)">Coming soon</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ wearSoon }}" as="w" hint-placeholder-count="4">
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">{{ w }}</div>
+</sc-for>
+</div>
+</div>
+<div style="background:rgba(200,255,235,0.06);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.22);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">What we track</div><div style="font-size:22px;font-weight:650">Sleep now, more markers later</div></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:6px 8px 6px 18px;border-radius:999px;background:rgba(200,255,235,0.12);border:1px solid rgba(92,242,176,0.5);font-size:16px;font-weight:650">Sleep<span style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:rgba(92,242,176,0.16);color:#5CF2B0">Active</span></div>
+</div>
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px dashed rgba(242,251,247,0.32);background:rgba(242,251,247,0.06);color:rgba(242,251,247,0.78)">Coming soon</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ markSoon }}" as="m" hint-placeholder-count="6">
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:5px 15px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14.5px;font-weight:500;color:rgba(242,251,247,0.68)">{{ m }}</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<footer id="about" style="display:flex;flex-direction:column;gap:18px;padding:28px 0 48px;border-top:1px solid rgba(242,251,247,0.12);scroll-margin-top:24px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px">
+<p style="margin:0;font-size:14px;color:rgba(242,251,247,0.8)">A wellness proof of concept, not medical advice. Demo data is synthetic.</p>
+<button onClick="{{ toggleAbout }}" aria-expanded="{{ aboutOpen }}" style="min-height:44px;padding:0;background:none;border:0;color:#5CF2B0;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer">About and safety</button>
+</div>
+<sc-if value="{{ aboutOpen }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;padding:28px;border-radius:24px;background:rgba(200,255,235,0.06);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.22)">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font-size:16px;line-height:1.55">TrendSpotter is a physician-designed wellness proof of concept. It is not a medical device and does not diagnose, treat or monitor any condition.</p>
+<p style="margin:0;font-size:16px;line-height:1.55;color:rgba(242,251,247,0.8)">Demo data is synthetic. Oura and Whoop appear as examples; no account is connected.</p>
+</div>
+<div style="padding:18px;border-radius:18px;background:rgba(233,211,166,0.10);border:1px solid rgba(233,211,166,0.4);display:flex;flex-direction:column;gap:8px">
+<span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#E9D3A6;font-weight:700">Safety</span>
+<span style="font-size:16px;line-height:1.55;font-weight:600">If you have chest pain, fainting, or trouble breathing, seek care now.</span>
+</div>
+</div>
+</sc-if>
+</footer>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;phoneScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;today&quot;,&quot;plan&quot;,&quot;circle&quot;,&quot;landing&quot;,&quot;onboarding&quot;],&quot;default&quot;:&quot;today&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { aboutOpen: false };
+  renderVals() {
+    return {
+      phoneScreen: this.props.phoneScreen ?? 'today',
+      wearSoon: ['Apple Health and Apple Watch', 'Garmin', 'Fitbit and Google Pixel Watch', 'Samsung Galaxy Watch and Ring'],
+      markSoon: ['Activity and steps', 'HRV and recovery', 'Resting heart rate', 'Stress', 'Cardio fitness', 'Cycle and perimenopause context'],
+      aboutOpen: this.state.aboutOpen,
+      toggleAbout: () => this.setState(s => ({ aboutOpen: !s.aboutOpen })),
+      openAbout: () => this.setState({ aboutOpen: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

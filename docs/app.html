@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Nunito:wght@700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#04070A;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#5CF2B0}
+a:hover{color:#F2FBF7}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;align-items:center;gap:18px;padding:28px 16px 40px;font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',system-ui,sans-serif;color:#F2FBF7">
+
+<sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;max-width:410px;width:100%">
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px">
+<sc-for list="{{ jumps }}" as="j" hint-placeholder-count="5">
+<button onClick="{{ j.go }}" style="min-height:36px;padding:0 14px;border-radius:999px;border:1px solid {{ j.border }};background:{{ j.bg }};color:#F2FBF7;font-size:13px;font-weight:600;cursor:pointer">{{ j.label }}</button>
+</sc-for>
+</div>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px;align-items:center">
+<span style="font-size:12px;color:rgba(242,251,247,0.7);letter-spacing:0.08em;text-transform:uppercase">Detail</span>
+<sc-for list="{{ styleJumps }}" as="j" hint-placeholder-count="4">
+<button onClick="{{ j.go }}" style="min-height:32px;padding:0 12px;border-radius:999px;border:1px solid {{ j.border }};background:{{ j.bg }};color:#F2FBF7;font-size:12px;font-weight:600;cursor:pointer">{{ j.label }}</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<div style="width:410px;max-width:100%;padding:10px;border-radius:60px;background:#111417;box-shadow:0 0 0 1px rgba(255,255,255,0.07),0 40px 90px rgba(0,0,0,0.6)">
+<div style="position:relative;height:844px;border-radius:50px;overflow:hidden;background:#04070A;isolation:isolate">
+
+<div style="position:absolute;left:-150px;top:-170px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(27,217,160,0.62) 0%,rgba(27,217,160,0) 68%);filter:blur(30px);pointer-events:none"></div>
+<div style="position:absolute;right:-170px;top:-150px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(42,123,255,0.5) 0%,rgba(42,123,255,0) 68%);filter:blur(30px);pointer-events:none"></div>
+<div style="position:absolute;right:-180px;bottom:-160px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(59,31,110,0.95) 0%,rgba(59,31,110,0) 68%);filter:blur(30px);pointer-events:none"></div>
+
+<div style="position:absolute;top:0;left:0;right:0;height:50px;z-index:15;display:flex;align-items:center;justify-content:space-between;padding:6px 30px 0;background:linear-gradient(180deg,rgba(4,7,10,0.55),rgba(4,7,10,0));pointer-events:none">
+<span style="font-size:15px;font-weight:600">21:48</span>
+<div style="display:flex;align-items:center;gap:6px">
+<div style="width:17px;height:10px;display:flex;align-items:flex-end;gap:2px"><div style="width:3px;height:4px;background:#F2FBF7;border-radius:1px"></div><div style="width:3px;height:6px;background:#F2FBF7;border-radius:1px"></div><div style="width:3px;height:8px;background:#F2FBF7;border-radius:1px"></div><div style="width:3px;height:10px;background:#F2FBF7;border-radius:1px"></div></div>
+<div style="width:24px;height:11px;border:1px solid rgba(242,251,247,0.6);border-radius:3px;padding:1px"><div style="width:70%;height:100%;background:#F2FBF7;border-radius:1px"></div></div>
+</div>
+</div>
+
+<div ref="{{ scrollRef }}" style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;padding-top:52px;z-index:5">
+
+<sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:30px;padding:0 20px 44px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px"><div style="width:10px;height:10px;border-radius:50%;background:#5CF2B0;box-shadow:0 0 12px rgba(92,242,176,0.8)"></div>TrendSpotter</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;padding-top:18px">
+<div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Physician-designed · Sleep first</div>
+<h1 style="margin:0;font-family:ui-rounded,'SF Pro Rounded','Nunito',-apple-system,'Inter',sans-serif;font-size:48px;font-weight:800;letter-spacing:-0.03em;line-height:1">TrendSpotter</h1>
+<p style="margin:0;font-size:20px;line-height:1.4;color:#F2FBF7;text-wrap:pretty">Wearables tell you what happened. TrendSpotter helps you change what happens next, with your circle.</p>
+<button onClick="{{ goOnb1 }}" style="margin-top:8px;min-height:54px;border-radius:999px;border:0;background:#5CF2B0;color:#04140D;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(92,242,176,0.28)">Try the demo</button>
+<div style="font-size:13px;color:rgba(242,251,247,0.8);text-align:center">Synthetic demo data. No account needed.</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:20px;display:flex;flex-direction:column;gap:6px">
+<div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5CF2B0;font-weight:600">Focus</div>
+<div style="font-size:18px;font-weight:650">One behaviour at a time</div>
+<p style="margin:0;font-size:15px;line-height:1.45;color:rgba(242,251,247,0.8)">Your devices produce dozens of scores. We turn them into a single habit for 14 days, then you keep, adjust or swap it.</p>
+</div>
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:20px;display:flex;flex-direction:column;gap:6px">
+<div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5CF2B0;font-weight:600">Honesty</div>
+<div style="font-size:18px;font-weight:650">Honest data coverage</div>
+<p style="margin:0;font-size:15px;line-height:1.45;color:rgba(242,251,247,0.8)">We show how many nights your wearables actually captured, so a missing night never reads as a failure.</p>
+</div>
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:20px;display:flex;flex-direction:column;gap:6px">
+<div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5CF2B0;font-weight:600">Privacy</div>
+<div style="font-size:18px;font-weight:650">Partners cheer, never see</div>
+<p style="margin:0;font-size:15px;line-height:1.45;color:rgba(242,251,247,0.8)">Your circle sees check marks and cheers. Never your sleep, your scores or your data.</p>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Works with</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:6px 8px 6px 16px;border-radius:999px;background:rgba(200,255,235,0.12);border:1px solid rgba(92,242,176,0.5);font-size:15px;font-weight:650">Oura<span style="font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:rgba(92,242,176,0.16);color:#5CF2B0">Demo data</span></div>
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:6px 8px 6px 16px;border-radius:999px;background:rgba(200,255,235,0.12);border:1px solid rgba(92,242,176,0.5);font-size:15px;font-weight:650">Whoop<span style="font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:rgba(92,242,176,0.16);color:#5CF2B0">Demo data</span></div>
+</div>
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px dashed rgba(242,251,247,0.32);background:rgba(242,251,247,0.06);color:rgba(242,251,247,0.78)">Coming soon</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ wearSoon }}" as="w" hint-placeholder-count="4">
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:5px 14px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14px;font-weight:500;color:rgba(242,251,247,0.68)">{{ w }}</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">What we track</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:6px 8px 6px 16px;border-radius:999px;background:rgba(200,255,235,0.12);border:1px solid rgba(92,242,176,0.5);font-size:15px;font-weight:650">Sleep<span style="font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:rgba(92,242,176,0.16);color:#5CF2B0">Active</span></div>
+</div>
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px dashed rgba(242,251,247,0.32);background:rgba(242,251,247,0.06);color:rgba(242,251,247,0.78)">Coming soon</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ markSoon }}" as="m" hint-placeholder-count="6">
+<div style="display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:5px 14px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14px;font-weight:500;color:rgba(242,251,247,0.68)">{{ m }}</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;padding-top:18px;border-top:1px solid rgba(242,251,247,0.12)">
+<p style="margin:0;font-size:13px;line-height:1.5;color:rgba(242,251,247,0.8)">A wellness proof of concept, not medical advice. Demo data is synthetic.</p>
+<button onClick="{{ openAbout }}" style="align-self:flex-start;min-height:44px;padding:0;background:none;border:0;color:#5CF2B0;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer">About and safety</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isOnb1 }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:22px;padding:4px 20px 44px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<button onClick="{{ goLanding }}" style="min-height:44px;padding:0;background:none;border:0;color:rgba(242,251,247,0.8);font-size:15px;font-weight:500;cursor:pointer">Back</button>
+<div style="display:flex;gap:6px"><div style="width:28px;height:4px;border-radius:2px;background:#5CF2B0"></div><div style="width:28px;height:4px;border-radius:2px;background:rgba(242,251,247,0.2)"></div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Step 1 of 2</div>
+<h1 style="margin:0;font-size:34px;font-weight:750;letter-spacing:-0.02em;line-height:1.1">How much detail do you want?</h1>
+<p style="margin:0;font-size:16px;line-height:1.45;color:rgba(242,251,247,0.8)">We shape every screen around your answer. You can change it anytime.</p>
+</div>
+<div role="radiogroup" style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ styleOptions }}" as="o" hint-placeholder-count="4">
+<button role="radio" aria-checked="{{ o.selected }}" onClick="{{ o.pick }}" style="display:flex;align-items:flex-start;gap:14px;text-align:left;min-height:76px;padding:16px 18px;border-radius:22px;border:1px solid {{ o.border }};background:{{ o.bg }};-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.12);color:#F2FBF7;cursor:pointer">
+<div style="flex:none;margin-top:2px;width:22px;height:22px;border-radius:50%;border:2px solid {{ o.dot }};display:flex;align-items:center;justify-content:center"><sc-if value="{{ o.selected }}" hint-placeholder-val="{{ false }}"><div style="width:10px;height:10px;border-radius:50%;background:#5CF2B0"></div></sc-if></div>
+<div style="display:flex;flex-direction:column;gap:4px;flex:1">
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:17px;font-weight:650">{{ o.name }}</span><sc-if value="{{ o.isDefault }}" hint-placeholder-val="{{ false }}"><span style="font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:rgba(242,251,247,0.12);color:#F2FBF7">Default</span></sc-if></div>
+<span style="font-size:14.5px;line-height:1.4;color:rgba(242,251,247,0.8)">{{ o.desc }}</span>
+</div>
+</button>
+</sc-for>
+</div>
+<button onClick="{{ goOnb2 }}" style="min-height:54px;border-radius:999px;border:0;background:#5CF2B0;color:#04140D;font-size:17px;font-weight:700;cursor:pointer">Continue</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isOnb2 }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:22px;padding:4px 20px 44px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<button onClick="{{ goOnb1 }}" style="min-height:44px;padding:0;background:none;border:0;color:rgba(242,251,247,0.8);font-size:15px;font-weight:500;cursor:pointer">Back</button>
+<div style="display:flex;gap:6px"><div style="width:28px;height:4px;border-radius:2px;background:#5CF2B0"></div><div style="width:28px;height:4px;border-radius:2px;background:#5CF2B0"></div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Step 2 of 2</div>
+<h1 style="margin:0;font-size:34px;font-weight:750;letter-spacing:-0.02em;line-height:1.1">What would you like to work on first?</h1>
+<p style="margin:0;font-size:16px;line-height:1.45;color:rgba(242,251,247,0.8)">We start with one focus. The rest are on our roadmap.</p>
+</div>
+<div role="radio" aria-checked="true" style="display:flex;align-items:center;gap:14px;min-height:76px;padding:16px 18px;border-radius:22px;border:1px solid rgba(92,242,176,0.75);background:rgba(92,242,176,0.10);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.12)">
+<div style="flex:none;width:22px;height:22px;border-radius:50%;background:#5CF2B0;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-4.9" fill="none" stroke="#04140D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-size:17px;font-weight:650">Sleep</span>
+<span style="font-size:14.5px;color:rgba(242,251,247,0.8)">Uses your Oura and Whoop demo data</span>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">On the roadmap</div>
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px dashed rgba(242,251,247,0.32);background:rgba(242,251,247,0.06);color:rgba(242,251,247,0.78)">Coming soon</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ markSoon }}" as="m" hint-placeholder-count="6">
+<div aria-disabled="true" style="display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:5px 14px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14px;font-weight:500;color:rgba(242,251,247,0.68)">{{ m }}</div>
+</sc-for>
+</div>
+</div>
+<p style="margin:0;font-size:14.5px;line-height:1.45;color:rgba(242,251,247,0.8)">TrendSpotter supports habits; for symptoms or health concerns, talk to your clinician.</p>
+<button onClick="{{ goToday }}" style="min-height:54px;border-radius:999px;border:0;background:#5CF2B0;color:#04140D;font-size:17px;font-weight:700;cursor:pointer">Start my sleep plan</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isToday }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px;padding:0 20px">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-top:4px">
+<div style="font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Sunday evening</div>
+<button onClick="{{ goOnb1 }}" aria-label="Change detail level" style="min-height:44px;display:flex;align-items:center;padding:0;background:none;border:0;cursor:pointer"><span style="padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.18);background:rgba(200,255,235,0.08);color:#F2FBF7;font-size:12.5px;font-weight:600;white-space:nowrap">{{ styleName }}</span></button>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:4px">
+<div style="font-family:ui-rounded,'SF Pro Rounded','Nunito',-apple-system,'Inter',sans-serif;font-size:76px;font-weight:800;letter-spacing:-0.035em;line-height:0.95">Day 9</div>
+<div style="font-size:17px;color:rgba(242,251,247,0.8)">of your 14-day sleep optimization plan</div>
+</div>
+
+<div onClick="{{ goPlan }}" role="button" aria-label="Open tonight's plan" style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:18px 20px 20px;cursor:pointer;display:flex;flex-direction:column;gap:6px">
+<div style="font-size:17px;font-weight:600">Tonight</div>
+<div style="font-family:ui-rounded,'SF Pro Rounded','Nunito',-apple-system,'Inter',sans-serif;font-size:62px;font-weight:800;letter-spacing:-0.02em;line-height:1">23:05</div>
+<sc-if value="{{ isLite }}" hint-placeholder-val="{{ true }}"><p style="margin:2px 0 0;font-size:15.5px;line-height:1.4;color:rgba(242,251,247,0.8)">Lights out within 30 minutes. Data coverage: 11 of 14 nights</p></sc-if>
+<sc-if value="{{ isDismisser }}" hint-placeholder-val="{{ false }}"><p style="margin:2px 0 0;font-size:15.5px;line-height:1.4;color:rgba(242,251,247,0.8)">Lights out within 30 minutes.</p></sc-if>
+<sc-if value="{{ isAnxious }}" hint-placeholder-val="{{ false }}"><p style="margin:2px 0 0;font-size:15.5px;line-height:1.4;color:rgba(242,251,247,0.8)">Aim for lights out around this time. Anywhere in the half hour after it counts.</p></sc-if>
+<sc-if value="{{ isDevotee }}" hint-placeholder-val="{{ false }}">
+<p style="margin:2px 0 0;font-size:15.5px;line-height:1.4;color:rgba(242,251,247,0.8)">Lights out within 30 minutes. Data coverage: 11 of 14 nights</p>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:6px">
+<div style="display:flex;flex-direction:column;gap:3px;padding:10px;border-radius:14px;background:rgba(242,251,247,0.06)"><span style="font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,251,247,0.8)">Oura</span><span style="font-size:13.5px;font-weight:650">11 of 14</span></div>
+<div style="display:flex;flex-direction:column;gap:3px;padding:10px;border-radius:14px;background:rgba(242,251,247,0.06)"><span style="font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,251,247,0.8)">Whoop</span><span style="font-size:13.5px;font-weight:650">9 of 14</span></div>
+<div style="display:flex;flex-direction:column;gap:3px;padding:10px;border-radius:14px;background:rgba(242,251,247,0.06)"><span style="font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,251,247,0.8)">Window</span><span style="font-size:13.5px;font-weight:650">to 23:35</span></div>
+</div>
+</sc-if>
+<div style="display:flex;margin-top:8px"><span style="padding:7px 14px;border-radius:999px;background:#E9D3A6;color:#1F1708;font-size:15px;font-weight:700">Wind-down at 22:35</span></div>
+</div>
+
+<div onClick="{{ goCircle }}" role="button" aria-label="Open your circle" style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:18px 18px 22px;cursor:pointer;display:flex;flex-direction:column;gap:14px">
+<div style="font-size:17px;font-weight:600">Your circle</div>
+<div style="display:grid;grid-template-columns:168px minmax(0,1fr);gap:14px;align-items:center">
+<div style="position:relative;width:168px;height:168px">
+<div style="position:absolute;left:20px;top:20px;width:128px;height:128px;border-radius:50%;border:2px solid rgba(92,242,176,0.45)"></div>
+<div style="position:absolute;left:50px;top:50px;width:68px;height:68px;border-radius:50%;background:#173F33;border:3px solid #5CF2B0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700">You</div>
+<div style="position:absolute;left:62px;top:-2px;width:44px;height:44px;border-radius:50%;background:#A6EBD3;color:#04140D;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800">M<div style="position:absolute;right:-5px;bottom:-5px;width:20px;height:20px;border-radius:50%;background:#5CF2B0;border:2px solid #0E1A1A;display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-4.9" fill="none" stroke="#04140D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div>
+<div style="position:absolute;left:118px;top:89px;width:44px;height:44px;border-radius:50%;background:#E9D3A6;color:#1F1708;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800">J<div style="position:absolute;right:-5px;bottom:-5px;width:20px;height:20px;border-radius:50%;background:#5CF2B0;border:2px solid #0E1A1A;display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-4.9" fill="none" stroke="#04140D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div>
+<div style="position:absolute;left:0;top:79px;width:44px;height:44px;border-radius:50%;border:1.5px dashed rgba(242,251,247,0.5);background:rgba(4,7,10,0.5);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;color:rgba(242,251,247,0.85)">+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:15.5px;line-height:1.35;color:rgba(242,251,247,0.8)">2 Cheers from your circle!</div>
+<div style="font-size:15.5px;line-height:1.3;font-weight:700">Circle data shared: Check marks</div>
+</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:18px;display:flex;flex-direction:column;gap:6px;min-height:172px">
+<div style="font-size:17px;font-weight:600">Goals kept</div>
+<sc-if value="{{ showNums }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:baseline;font-family:ui-rounded,'SF Pro Rounded','Nunito',-apple-system,'Inter',sans-serif;font-weight:800;line-height:1"><span style="font-size:56px;letter-spacing:-0.03em">8</span><span style="font-size:26px;color:rgba(242,251,247,0.8)">/9</span></div>
+<div style="font-size:15px;color:rgba(242,251,247,0.8)">nights so far</div>
+<div style="font-size:13px;line-height:1.35;color:#F2FBF7;font-weight:600;margin-top:4px">7-day bedtime range: 25 min</div>
+<sc-if value="{{ isDevotee }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;line-height:1.4;color:rgba(242,251,247,0.8)">Week 1 range: 48 min<br>Average lights out: 23:11</div></sc-if>
+</sc-if>
+<sc-if value="{{ showDots }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(3,22px);gap:8px;margin:6px 0 4px">
+<sc-for list="{{ nights }}" as="n" hint-placeholder-count="6">
+<div style="width:22px;height:22px;border-radius:50%;border:{{ n.border }};background:{{ n.bg }};display:flex;align-items:center;justify-content:center"><sc-if value="{{ n.kept }}" hint-placeholder-val="{{ true }}"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-4.9" fill="none" stroke="#04140D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></sc-if></div>
+</sc-for>
+</div>
+<sc-if value="{{ isDismisser }}" hint-placeholder-val="{{ false }}"><div style="font-size:15px;color:rgba(242,251,247,0.8)">nights so far</div></sc-if>
+<sc-if value="{{ isAnxious }}" hint-placeholder-val="{{ false }}"><div style="font-size:14.5px;line-height:1.35;color:rgba(242,251,247,0.8)">Most nights kept so far.</div></sc-if>
+</sc-if>
+</div>
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:18px;display:flex;flex-direction:column;gap:10px;min-height:172px">
+<div style="font-size:17px;font-weight:600">Today</div>
+<div style="position:relative;width:104px;height:104px;align-self:center">
+<svg width="104" height="104" viewBox="0 0 104 104" style="transform:rotate(-90deg)">
+<circle cx="52" cy="52" r="42" fill="none" stroke="rgba(242,251,247,0.14)" stroke-width="10"></circle>
+<circle cx="52" cy="52" r="42" fill="none" stroke="#5CF2B0" stroke-width="10" stroke-linecap="round" stroke-dasharray="145 264"></circle>
+<circle cx="52" cy="52" r="42" fill="none" stroke="#E9D3A6" stroke-width="10" stroke-linecap="round" stroke-dasharray="44 264" stroke-dashoffset="-158"></circle>
+</svg>
+<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;color:rgba(242,251,247,0.85)">Evening</div>
+</div>
+</div>
+</div>
+<div style="height:150px;flex:none"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPlan }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px;padding:0 20px">
+<div style="display:flex;flex-direction:column;gap:8px;margin:10px 0 6px">
+<div style="font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Your sleep plan</div>
+<h1 style="margin:0;font-size:36px;font-weight:750;letter-spacing:-0.02em;line-height:1.05">Steady bedtime</h1>
+<p style="margin:0;font-size:16px;line-height:1.45;color:rgba(242,251,247,0.8)">Lights out at 23:05, within 30 minutes, every night for 14 days. A consistent bedtime is one of the simplest ways to improve sleep.</p>
+</div>
+
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:20px;display:flex;flex-direction:column;gap:14px">
+<div style="font-size:17px;font-weight:600">How to do it</div>
+<div style="display:flex;gap:14px;align-items:flex-start"><div style="flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid #5CF2B0;color:#5CF2B0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">1</div><p style="margin:3px 0 0;font-size:15.5px;line-height:1.45">At 22:35, start wind-down: dim the lights and put your phone on charge outside the bedroom.</p></div>
+<div style="display:flex;gap:14px;align-items:flex-start"><div style="flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid #5CF2B0;color:#5CF2B0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">2</div><p style="margin:3px 0 0;font-size:15.5px;line-height:1.45">Keep the same lights-out time on weekends. Consistency matters more than an early night.</p></div>
+<div style="display:flex;gap:14px;align-items:flex-start"><div style="flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid #5CF2B0;color:#5CF2B0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">3</div><p style="margin:3px 0 0;font-size:15.5px;line-height:1.45">Not sleepy yet? Read something calm in low light until you are, then switch off.</p></div>
+</div>
+
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="font-size:17px;font-weight:600">Your when-then plan</div>
+<div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:10px 12px;align-items:baseline">
+<span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#E9D3A6;font-weight:700">When</span><span style="font-size:16px;line-height:1.4">my wind-down reminder sounds at 22:35,</span>
+<span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5CF2B0;font-weight:700">Then</span><span style="font-size:16px;line-height:1.4">I plug my phone in by the kitchen door and dim the lights.</span>
+</div>
+</div>
+
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Daily check</div>
+<div style="font-size:18px;font-weight:650;line-height:1.3">Did you keep last night's bedtime?</div>
+</div>
+<sc-if value="{{ checkNone }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+<button onClick="{{ markKept }}" style="min-height:50px;border-radius:999px;border:0;background:#5CF2B0;color:#04140D;font-size:16px;font-weight:700;cursor:pointer">Kept it</button>
+<button onClick="{{ markMissed }}" style="min-height:50px;border-radius:999px;border:1px solid rgba(242,251,247,0.24);background:rgba(242,251,247,0.06);color:#F2FBF7;font-size:16px;font-weight:600;cursor:pointer">Not this time</button>
+</div>
+</sc-if>
+<sc-if value="{{ checkKept }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:14px;align-items:center;padding:14px;border-radius:18px;background:rgba(92,242,176,0.12);border:1px solid rgba(92,242,176,0.4)">
+<div style="flex:none;width:40px;height:40px;border-radius:50%;background:#5CF2B0;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-4.9" fill="none" stroke="#04140D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:16px;font-weight:700">Another steady night.</span><span style="font-size:14.5px;line-height:1.4;color:rgba(242,251,247,0.8)">Your bedtime is getting more consistent. Your circle will see a check mark.</span></div>
+</div>
+<button onClick="{{ resetCheck }}" style="align-self:flex-start;min-height:44px;padding:0;background:none;border:0;color:rgba(242,251,247,0.8);font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Change answer</button>
+</sc-if>
+<sc-if value="{{ checkMissed }}" hint-placeholder-val="{{ false }}">
+<p style="margin:0;font-size:15.5px;line-height:1.45;color:rgba(242,251,247,0.8)">That happens. What got in the way?</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ barriers }}" as="b" hint-placeholder-count="5">
+<button onClick="{{ b.pick }}" aria-pressed="{{ b.selected }}" style="min-height:44px;padding:0 16px;border-radius:999px;border:1px solid {{ b.border }};background:{{ b.bg }};color:#F2FBF7;font-size:14.5px;font-weight:600;cursor:pointer">{{ b.label }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ hasTip }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:18px;background:rgba(233,211,166,0.10);border:1px solid rgba(233,211,166,0.4)">
+<span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#E9D3A6;font-weight:700">Try this tonight</span>
+<span style="font-size:15.5px;line-height:1.45">{{ tip }}</span>
+<sc-if value="{{ tipNotSaved }}" hint-placeholder-val="{{ true }}"><button onClick="{{ saveTip }}" style="align-self:flex-start;min-height:44px;padding:0 18px;border-radius:999px;border:0;background:#E9D3A6;color:#1F1708;font-size:15px;font-weight:700;cursor:pointer">Add to tonight</button></sc-if>
+<sc-if value="{{ tipSaved }}" hint-placeholder-val="{{ false }}"><span style="font-size:14.5px;font-weight:600;color:#E9D3A6">Added. We will remind you at wind-down.</span></sc-if>
+</div>
+</sc-if>
+<button onClick="{{ resetCheck }}" style="align-self:flex-start;min-height:44px;padding:0;background:none;border:0;color:rgba(242,251,247,0.8);font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Change answer</button>
+</sc-if>
+</div>
+
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">14-day review</span><span style="font-size:13px;color:rgba(242,251,247,0.8)">Opens on day 14</span></div>
+<div style="font-size:18px;font-weight:650;line-height:1.3">Then you decide what comes next</div>
+</div>
+<div role="radiogroup" style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+<button role="radio" aria-checked="{{ r.selected }}" onClick="{{ r.pick }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;min-height:64px;padding:12px 16px;border-radius:18px;border:1px solid {{ r.border }};background:{{ r.bg }};color:#F2FBF7;cursor:pointer"><span style="font-size:16px;font-weight:700">{{ r.name }}</span><span style="font-size:14px;line-height:1.4;color:rgba(242,251,247,0.8)">{{ r.desc }}</span></button>
+</sc-for>
+</div>
+<sc-if value="{{ hasReview }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;line-height:1.45;color:rgba(242,251,247,0.8)">Saved as your current choice. We will ask again on day 14, and you can change it then.</p></sc-if>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
+<div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Next plans</div>
+<sc-for list="{{ nextPlans }}" as="p" hint-placeholder-count="3">
+<div aria-disabled="true" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border-radius:22px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28)">
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:16px;font-weight:650;color:rgba(242,251,247,0.72)">{{ p.name }}</span><span style="font-size:14px;line-height:1.4;color:rgba(242,251,247,0.66)">{{ p.desc }}</span></div>
+<span style="flex:none;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:rgba(242,251,247,0.08);color:rgba(242,251,247,0.72);white-space:nowrap">Coming soon</span>
+</div>
+</sc-for>
+</div>
+<div style="height:150px;flex:none"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCircle }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px;padding:0 20px">
+<div style="display:flex;flex-direction:column;gap:8px;margin:10px 0 2px">
+<div style="font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:500">Your circle</div>
+<h1 style="margin:0;font-size:36px;font-weight:750;letter-spacing:-0.02em;line-height:1.05">Who's with you</h1>
+<p style="margin:0;font-size:16px;line-height:1.45;color:rgba(242,251,247,0.8)">Your circle sees check marks and cheers. Never your sleep data.</p>
+</div>
+
+<div style="position:relative;width:300px;height:300px;align-self:center;margin:8px 0">
+<div style="position:absolute;left:30px;top:30px;width:240px;height:240px;border-radius:50%;border:2px solid rgba(92,242,176,0.45);box-shadow:0 0 60px rgba(92,242,176,0.12),inset 0 0 60px rgba(92,242,176,0.08)"></div>
+<div style="position:absolute;left:94px;top:94px;width:112px;height:112px;border-radius:50%;background:#173F33;border:3px solid #5CF2B0;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;box-shadow:0 0 40px rgba(92,242,176,0.25)">You</div>
+<div style="position:absolute;left:114px;top:-6px;width:72px;height:72px;border-radius:50%;background:#A6EBD3;color:#04140D;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800">M<div style="position:absolute;right:-4px;bottom:-4px;width:28px;height:28px;border-radius:50%;background:#5CF2B0;border:3px solid #0B1414;display:flex;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-4.9" fill="none" stroke="#04140D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div>
+<div style="position:absolute;left:220px;top:165px;width:72px;height:72px;border-radius:50%;background:#E9D3A6;color:#1F1708;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800">J<div style="position:absolute;right:-4px;bottom:-4px;width:28px;height:28px;border-radius:50%;background:#5CF2B0;border:3px solid #0B1414;display:flex;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-4.9" fill="none" stroke="#04140D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div>
+<button onClick="{{ invite }}" aria-label="Invite a partner" style="position:absolute;left:0;top:145px;width:72px;height:72px;border-radius:50%;border:2px dashed rgba(242,251,247,0.5);background:rgba(4,7,10,0.6);color:#F2FBF7;font-size:28px;font-weight:500;cursor:pointer">+</button>
+</div>
+
+<sc-if value="{{ invited }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:12px 16px;border-radius:16px;background:rgba(242,251,247,0.06);font-size:14px;line-height:1.45;color:rgba(242,251,247,0.85)">Invites open in the full version. In this demo, your circle is Maya and Jordan.</p></sc-if>
+
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:8px 18px">
+<div style="display:flex;align-items:center;gap:14px;min-height:72px;border-bottom:1px solid rgba(242,251,247,0.1)">
+<div style="flex:none;width:40px;height:40px;border-radius:50%;background:#A6EBD3;color:#04140D;display:flex;align-items:center;justify-content:center;font-weight:800">M</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:650">Maya</span><span style="font-size:14px;color:rgba(242,251,247,0.8)">Cheered you: Sleep well</span></div>
+<div aria-label="Checked in" style="flex:none;width:28px;height:28px;border-radius:50%;background:#5CF2B0;display:flex;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-4.9" fill="none" stroke="#04140D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+</div>
+<div style="display:flex;align-items:center;gap:14px;min-height:72px;border-bottom:1px solid rgba(242,251,247,0.1)">
+<div style="flex:none;width:40px;height:40px;border-radius:50%;background:#E9D3A6;color:#1F1708;display:flex;align-items:center;justify-content:center;font-weight:800">J</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:16px;font-weight:650">Jordan</span><span style="font-size:14px;color:rgba(242,251,247,0.8)">Cheered you: Proud of you</span></div>
+<div aria-label="Checked in" style="flex:none;width:28px;height:28px;border-radius:50%;background:#5CF2B0;display:flex;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-4.9" fill="none" stroke="#04140D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+</div>
+<button onClick="{{ invite }}" style="display:flex;align-items:center;gap:14px;width:100%;min-height:68px;padding:0;background:none;border:0;color:#F2FBF7;cursor:pointer;text-align:left">
+<div style="flex:none;width:40px;height:40px;border-radius:50%;border:1.5px dashed rgba(242,251,247,0.5);display:flex;align-items:center;justify-content:center;font-size:20px">+</div>
+<span style="font-size:15.5px;font-weight:600;color:rgba(242,251,247,0.85)">Invite one more partner</span>
+</button>
+</div>
+
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:17px;font-weight:600">Send a cheer</div><span style="font-size:14px;color:rgba(242,251,247,0.8)">Maya and Jordan both checked in tonight.</span></div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+<sc-for list="{{ cheers }}" as="c" hint-placeholder-count="4">
+<button onClick="{{ c.send }}" aria-pressed="{{ c.selected }}" style="min-height:48px;padding:0 12px;border-radius:999px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};font-size:15px;font-weight:650;cursor:pointer">{{ c.label }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ hasCheer }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:600;color:#5CF2B0"><div style="flex:none;width:22px;height:22px;border-radius:50%;background:#5CF2B0;display:flex;align-items:center;justify-content:center"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-4.9" fill="none" stroke="#04140D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>Sent to Maya and Jordan: {{ cheerText }}</div>
+</sc-if>
+</div>
+
+<div style="background:rgba(200,255,235,0.09);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.26);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.14),0 14px 34px rgba(0,0,0,0.32);padding:20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
+<div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#5CF2B0;font-weight:700">They see</span><span style="font-size:15px;line-height:1.6">Check marks<br>Cheers</span></div>
+<div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(242,251,247,0.8);font-weight:700">They never see</span><span style="font-size:15px;line-height:1.6;color:rgba(242,251,247,0.8)">Bedtimes<br>Sleep scores<br>Wearable data</span></div>
+</div>
+<div style="height:150px;flex:none"></div>
+</div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ inApp }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:0;right:0;bottom:0;z-index:20;padding:34px 8px 24px;background:linear-gradient(180deg,rgba(4,7,10,0) 0%,rgba(4,7,10,0.82) 34%);display:flex;flex-direction:column;gap:8px">
+<div role="tablist" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;border-radius:999px;background:rgba(200,255,235,0.08);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.22)">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+<button role="tab" aria-selected="{{ t.active }}" onClick="{{ t.go }}" style="min-height:44px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};font-size:14.5px;font-weight:650;cursor:pointer">{{ t.label }}</button>
+</sc-for>
+</div>
+<div style="display:flex;align-items:center;gap:4px;padding:4px 4px 4px 10px;border-radius:999px;background:rgba(200,255,235,0.08);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,0.10);border-top-color:rgba(255,255,255,0.22);white-space:nowrap;font-size:11.5px;letter-spacing:-0.01em;min-width:0">
+<span style="color:rgba(242,251,247,0.8)">Trending:</span>
+<span style="padding:5px 7px;border-radius:999px;background:rgba(92,242,176,0.16);border:1px solid rgba(92,242,176,0.55);font-weight:700">Sleep</span>
+<span style="color:rgba(242,251,247,0.8);margin-left:2px">Source:</span>
+<span style="padding:5px 6px;border-radius:999px;background:rgba(122,96,220,0.24);border:1px solid rgba(255,255,255,0.22);font-weight:700">Oura</span>
+<span style="color:rgba(242,251,247,0.8)">+</span>
+<span style="padding:5px 6px;border-radius:999px;background:rgba(122,96,220,0.24);border:1px solid rgba(255,255,255,0.22);font-weight:700">Whoop</span>
+<button onClick="{{ openComing }}" style="margin-left:auto;flex:none;min-height:44px;padding:0 6px 0 2px;background:none;border:0;color:#5CF2B0;font-size:11px;font-weight:600;line-height:1.15;text-align:left;cursor:pointer;text-decoration:underline;text-underline-offset:2px">+ more<br>coming soon</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasSheet }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;justify-content:flex-end">
+<div onClick="{{ closeSheet }}" style="position:absolute;inset:0;background:rgba(2,4,6,0.62)"></div>
+<div role="dialog" aria-modal="true" style="position:relative;max-height:80%;overflow-y:auto;scrollbar-width:none;background:rgba(14,24,26,0.9);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);border-top:1px solid rgba(255,255,255,0.24);border-radius:30px 30px 0 0;padding:10px 20px 40px;display:flex;flex-direction:column;gap:16px">
+<div style="align-self:center;width:40px;height:5px;border-radius:3px;background:rgba(242,251,247,0.3)"></div>
+<sc-if value="{{ sheetComing }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:22px;font-weight:700">Coming soon</span><button onClick="{{ closeSheet }}" style="min-width:44px;min-height:44px;border-radius:50%;border:1px solid rgba(242,251,247,0.2);background:rgba(242,251,247,0.06);color:#F2FBF7;font-size:14px;font-weight:600;cursor:pointer">Done</button></div>
+<p style="margin:0;font-size:15px;line-height:1.45;color:rgba(242,251,247,0.8)">Today TrendSpotter reads sleep from Oura and Whoop demo data. This is our roadmap, not working features.</p>
+<div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8)">Wearables</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ wearSoon }}" as="w" hint-placeholder-count="4"><div style="display:inline-flex;align-items:center;min-height:34px;padding:5px 14px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14px;color:rgba(242,251,247,0.72)">{{ w }}</div></sc-for>
+</div>
+<div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,251,247,0.8)">Wellness markers</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ markSoon }}" as="m" hint-placeholder-count="6"><div style="display:inline-flex;align-items:center;min-height:34px;padding:5px 14px;border-radius:999px;background:rgba(200,255,235,0.035);border:1px dashed rgba(242,251,247,0.28);font-size:14px;color:rgba(242,251,247,0.72)">{{ m }}</div></sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ sheetAbout }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:22px;font-weight:700">About and safety</span><button onClick="{{ closeSheet }}" style="min-width:44px;min-height:44px;border-radius:50%;border:1px solid rgba(242,251,247,0.2);background:rgba(242,251,247,0.06);color:#F2FBF7;font-size:14px;font-weight:600;cursor:pointer">Done</button></div>
+<p style="margin:0;font-size:15.5px;line-height:1.5">TrendSpotter is a physician-designed wellness proof of concept. It is not a medical device and does not diagnose, treat or monitor any condition.</p>
+<p style="margin:0;font-size:15.5px;line-height:1.5;color:rgba(242,251,247,0.8)">Demo data is synthetic. Oura and Whoop appear as examples; no account is connected.</p>
+<div style="padding:16px;border-radius:18px;background:rgba(233,211,166,0.10);border:1px solid rgba(233,211,166,0.4);display:flex;flex-direction:column;gap:6px">
+<span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#E9D3A6;font-weight:700">Safety</span>
+<span style="font-size:15.5px;line-height:1.5;font-weight:600">If you have chest pain, fainting, or trouble breathing, seek care now.</span>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<div style="position:absolute;left:50%;bottom:8px;width:134px;height:5px;margin-left:-67px;border-radius:3px;background:rgba(242,251,247,0.55);z-index:50;pointer-events:none"></div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;landing&quot;,&quot;onboarding&quot;,&quot;today&quot;,&quot;plan&quot;,&quot;circle&quot;],&quot;default&quot;:&quot;landing&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;dataStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;plan&quot;,&quot;gentle&quot;,&quot;balanced&quot;,&quot;detail&quot;],&quot;default&quot;:&quot;balanced&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showNav&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  STYLES = [
+    { id: 'dismisser', name: 'Just the plan', desc: 'Tell me what to do tonight. Check marks, no numbers.' },
+    { id: 'anxious', name: 'Keep it gentle', desc: 'Calm wording and fewer numbers, so data never feels like a test.' },
+    { id: 'lite', name: 'Balanced', desc: 'A few numbers that matter, nothing more.' },
+    { id: 'devotee', name: 'All the detail', desc: 'Coverage by device, ranges and averages.' }
+  ];
+  BARRIERS = [
+    { id: 'work', label: 'Work ran late', tip: 'Stop work at 22:15. Write tomorrow\'s first task on paper, then close the laptop.' },
+    { id: 'screens', label: 'Screens kept me up', tip: 'Let the wind-down reminder be your cue to plug your phone in outside the bedroom.' },
+    { id: 'social', label: 'Out with friends', tip: 'On social nights, aim for the end of your 30-minute window and keep tomorrow\'s wake time the same.' },
+    { id: 'mind', label: 'Could not relax', tip: 'Keep a notepad by the bed. Jot down what is on your mind during wind-down, then dim the lights.' },
+    { id: 'travel', label: 'Travel', tip: 'On short trips, keep your home bedtime and get morning daylight wherever you wake up.' }
+  ];
+  REVIEWS = [
+    { id: 'keep', name: 'Keep', desc: 'It is working. Continue for another 14 days.' },
+    { id: 'adjust', name: 'Adjust', desc: 'Change the time or allow a longer window.' },
+    { id: 'swap', name: 'Swap', desc: 'Try a different sleep behaviour, like a steady wake time.' }
+  ];
+  CHEERS = ['Proud of you', 'Keep it steady', 'Sleep well', 'Good luck tonight'];
+  WEAR_SOON = ['Apple Health and Apple Watch', 'Garmin', 'Fitbit and Google Pixel Watch', 'Samsung Galaxy Watch and Ring'];
+  MARK_SOON = ['Activity and steps', 'HRV and recovery', 'Resting heart rate', 'Stress', 'Cardio fitness', 'Cycle and perimenopause context'];
+  NEXT = [
+    { name: 'Activity', desc: 'Short movement breaks after long sitting.' },
+    { name: 'Recovery', desc: 'Lighter days when recovery is low.' },
+    { name: 'Stress', desc: 'A short relaxation routine before wind-down.' }
+  ];
+  mapStyle(v) { const m = { plan: 'dismisser', gentle: 'anxious', balanced: 'lite', detail: 'devotee' }; return m[v] || v; }
+  mapScreen(s) { return s === 'onboarding' ? 'onb1' : (s || 'landing'); }
+  state = {
+    screen: this.mapScreen(this.props && this.props.startScreen),
+    style: this.mapStyle(this.props && this.props.dataStyle) || 'lite',
+    sheet: null, check: null, barrier: null, tipSaved: false, review: null, cheer: null, invited: false
+  };
+  scrollRef = React.createRef();
+  componentDidUpdate(pp, ps) {
+    if (pp.startScreen !== this.props.startScreen && this.props.startScreen) this.setState({ screen: this.mapScreen(this.props.startScreen), sheet: null });
+    if (pp.dataStyle !== this.props.dataStyle && this.props.dataStyle) this.setState({ style: this.mapStyle(this.props.dataStyle) });
+    if (ps.screen !== this.state.screen && this.scrollRef.current) this.scrollRef.current.scrollTop = 0;
+  }
+  renderVals() {
+    const s = this.state, st = s.style;
+    const go = (screen) => () => this.setState({ screen, sheet: null });
+    const inApp = ['today', 'plan', 'circle'].includes(s.screen);
+    const onAccent = 'rgba(92,242,176,0.75)', offBorder = 'rgba(255,255,255,0.14)';
+    const tabs = [['today', 'Today'], ['plan', 'Plan'], ['circle', 'Circle']].map(([id, label]) => {
+      const a = s.screen === id;
+      return { label, active: a, go: go(id), bg: a ? 'rgba(92,242,176,0.16)' : 'transparent', border: a ? 'rgba(92,242,176,0.55)' : 'transparent', color: a ? '#F2FBF7' : 'rgba(242,251,247,0.8)' };
+    });
+    const jumpIds = [['landing', 'Landing'], ['onb1', 'Onboarding'], ['today', 'Today'], ['plan', 'Plan'], ['circle', 'Circle']];
+    const jumpActive = s.screen === 'onb2' ? 'onb1' : s.screen;
+    const barrier = this.BARRIERS.find(b => b.id === s.barrier);
+    const missedIdx = 5;
+    return {
+      showNav: this.props.showNav !== false,
+      jumps: jumpIds.map(([id, label]) => ({ label, go: go(id), bg: jumpActive === id ? 'rgba(92,242,176,0.16)' : 'rgba(242,251,247,0.05)', border: jumpActive === id ? 'rgba(92,242,176,0.6)' : 'rgba(242,251,247,0.16)' })),
+      styleJumps: this.STYLES.map(o => ({ label: o.name, go: () => this.setState({ style: o.id }), bg: o.id === st ? 'rgba(233,211,166,0.16)' : 'rgba(242,251,247,0.05)', border: o.id === st ? 'rgba(233,211,166,0.6)' : 'rgba(242,251,247,0.16)' })),
+      scrollRef: this.scrollRef,
+      isLanding: s.screen === 'landing', isOnb1: s.screen === 'onb1', isOnb2: s.screen === 'onb2',
+      isToday: s.screen === 'today', isPlan: s.screen === 'plan', isCircle: s.screen === 'circle', inApp,
+      goLanding: go('landing'), goOnb1: go('onb1'), goOnb2: go('onb2'), goToday: go('today'), goPlan: go('plan'), goCircle: go('circle'),
+      tabs,
+      hasSheet: !!s.sheet, sheetComing: s.sheet === 'coming', sheetAbout: s.sheet === 'about',
+      openComing: () => this.setState({ sheet: 'coming' }), openAbout: () => this.setState({ sheet: 'about' }), closeSheet: () => this.setState({ sheet: null }),
+      styleOptions: this.STYLES.map(o => {
+        const sel = o.id === st;
+        return { ...o, selected: sel, isDefault: o.id === 'lite', pick: () => this.setState({ style: o.id }), border: sel ? onAccent : offBorder, bg: sel ? 'rgba(92,242,176,0.10)' : 'rgba(200,255,235,0.06)', dot: sel ? '#5CF2B0' : 'rgba(242,251,247,0.45)' };
+      }),
+      styleName: (this.STYLES.find(o => o.id === st) || this.STYLES[2]).name,
+      isDismisser: st === 'dismisser', isAnxious: st === 'anxious', isLite: st === 'lite', isDevotee: st === 'devotee',
+      showNums: st === 'lite' || st === 'devotee', showDots: st === 'dismisser' || st === 'anxious',
+      nights: Array.from({ length: 9 }, (_, i) => {
+        const kept = i !== missedIdx;
+        return { kept, bg: kept ? '#5CF2B0' : 'transparent', border: kept ? '0' : '1.5px solid rgba(242,251,247,0.35)' };
+      }),
+      wearSoon: this.WEAR_SOON, markSoon: this.MARK_SOON, nextPlans: this.NEXT,
+      checkNone: !s.check, checkKept: s.check === 'kept', checkMissed: s.check === 'missed',
+      markKept: () => this.setState({ check: 'kept' }), markMissed: () => this.setState({ check: 'missed' }),
+      resetCheck: () => this.setState({ check: null, barrier: null, tipSaved: false }),
+      barriers: this.BARRIERS.map(b => {
+        const sel = b.id === s.barrier;
+        return { ...b, selected: sel, pick: () => this.setState({ barrier: b.id, tipSaved: false }), border: sel ? 'rgba(233,211,166,0.8)' : 'rgba(242,251,247,0.22)', bg: sel ? 'rgba(233,211,166,0.16)' : 'rgba(242,251,247,0.05)' };
+      }),
+      hasTip: !!barrier, tip: barrier ? barrier.tip : '', tipSaved: s.tipSaved, tipNotSaved: !s.tipSaved,
+      saveTip: () => this.setState({ tipSaved: true }),
+      reviews: this.REVIEWS.map(r => {
+        const sel = r.id === s.review;
+        return { ...r, selected: sel, pick: () => this.setState({ review: r.id }), border: sel ? onAccent : offBorder, bg: sel ? 'rgba(92,242,176,0.10)' : 'rgba(242,251,247,0.04)' };
+      }),
+      hasReview: !!s.review,
+      cheers: this.CHEERS.map(c => {
+        const sel = c === s.cheer;
+        return { label: c, selected: sel, send: () => this.setState({ cheer: c }), border: sel ? '#5CF2B0' : 'rgba(242,251,247,0.22)', bg: sel ? '#5CF2B0' : 'rgba(242,251,247,0.05)', color: sel ? '#04140D' : '#F2FBF7' };
+      }),
+      hasCheer: !!s.cheer, cheerText: s.cheer || '',
+      invited: s.invited, invite: () => this.setState({ invited: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
